@@ -1,0 +1,29 @@
+{
+    "name": "balfour/laravel-klaviyo",
+    "description": "A library for interacting with the Klaviyo API in Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthew Goslett",
+            "email": "matthew@masterstart.com"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^6.3",
+        "laravel/framework": "^5.7",
+        "propaganistas/laravel-phone": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Balfour\\LaravelKlaviyo\\": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
