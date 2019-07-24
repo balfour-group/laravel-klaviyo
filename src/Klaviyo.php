@@ -97,8 +97,8 @@ class Klaviyo
     public function pushIdentity(IdentityInterface $identity)
     {
         $number = $identity->getPhoneNumber();
+
         $properties = [
-            '$id' => $identity->getPrimaryKey(),
             '$email' => $identity->getEmail(),
             '$first_name' => $identity->getFirstName(),
             '$last_name' => $identity->getLastName(),
@@ -107,6 +107,13 @@ class Klaviyo
             '$city' => $identity->getCity(),
             '$region' => $identity->getRegion(),
         ];
+
+        $id = $identity->getPrimaryKey();
+
+        if ($id) {
+            $properties['$id'] = $id;
+        }
+
         $properties = array_merge($properties, $identity->getCustomKlaviyoProperties());
 
         $this->identify($properties);
@@ -122,7 +129,12 @@ class Klaviyo
 
         $customProperties = [];
         if ($identity instanceof IdentityInterface) {
-            $customProperties['$id'] = $identity->getPrimaryKey();
+            $id = $identity->getPrimaryKey();
+            if ($id) {
+                $customProperties['$id'] = $identity->getPrimaryKey();
+            } else {
+                $customProperties['$email'] = $identity->getEmail();
+            }
         } else {
             $customProperties['$email'] = (string) $identity;
         }
