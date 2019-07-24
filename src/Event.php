@@ -2,9 +2,7 @@
 
 namespace Balfour\LaravelKlaviyo;
 
-use Balfour\LaravelKlaviyo\Jobs\TrackEvent;
-
-class Event
+class Event extends BaseEvent
 {
     /**
      * @var IdentityInterface|string
@@ -55,26 +53,5 @@ class Event
     public function getProperties()
     {
         return $this->properties;
-    }
-
-    /**
-     * @param string $queue
-     */
-    public function enqueue($queue = 'klaviyo')
-    {
-        if (config('klaviyo.enabled')) {
-            TrackEvent::enqueue($this, $queue);
-        }
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public function fire()
-    {
-        if (config('klaviyo.enabled')) {
-            $klaviyo = app(Klaviyo::class); /** @var Klaviyo $klaviyo */
-            $klaviyo->trackEvent($this);
-        }
     }
 }

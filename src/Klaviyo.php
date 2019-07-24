@@ -120,10 +120,10 @@ class Klaviyo
     }
 
     /**
-     * @param Event $event
+     * @param EventInterface $event
      * @throws \Exception
      */
-    public function trackEvent(Event $event)
+    public function trackEvent(EventInterface $event)
     {
         $identity = $event->getIdentity();
 

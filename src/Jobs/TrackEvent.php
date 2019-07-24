@@ -2,7 +2,7 @@
 
 namespace Balfour\LaravelKlaviyo\Jobs;
 
-use Balfour\LaravelKlaviyo\Event;
+use Balfour\LaravelKlaviyo\EventInterface;
 use Balfour\LaravelKlaviyo\Klaviyo;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,16 +15,16 @@ class TrackEvent implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
-     * @var Event
+     * @var EventInterface
      */
     public $event;
 
     /**
      * Create a new job instance.
      *
-     * @param Event $event
+     * @param EventInterface $event
      */
-    public function __construct(Event $event)
+    public function __construct(EventInterface $event)
     {
         $this->event = $event;
     }
@@ -41,10 +41,10 @@ class TrackEvent implements ShouldQueue
     }
 
     /**
-     * @param Event $event
+     * @param EventInterface $event
      * @param string|null $queue
      */
-    public static function enqueue(Event $event, $queue = null)
+    public static function enqueue(EventInterface $event, $queue = null)
     {
         if ($queue === null) {
             $queue = config('klaviyo.queue');
