@@ -50,6 +50,8 @@ class TrackEvent implements ShouldQueue
             $queue = config('klaviyo.queue');
         }
 
-        static::dispatch($event)->onQueue($queue);
+        if (config('klaviyo.enabled')) {
+            static::dispatch($event)->onQueue($queue);
+        }
     }
 }

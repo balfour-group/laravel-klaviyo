@@ -45,6 +45,8 @@ class PushIdentity implements ShouldQueue
      */
     public static function enqueue(IdentityInterface $identity)
     {
-        static::dispatch($identity)->onQueue(config('klaviyo.queue'));
+        if (config('klaviyo.enabled')) {
+            static::dispatch($identity)->onQueue(config('klaviyo.queue'));
+        }
     }
 }
