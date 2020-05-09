@@ -25,7 +25,7 @@ class Klaviyo
      * @param Client $client
      * @param string $apiKey
      */
-    public function __construct(Client $client, $apiKey)
+    public function __construct(Client $client, string $apiKey)
     {
         $this->client = $client;
         $this->apiKey = $apiKey;
@@ -34,7 +34,7 @@ class Klaviyo
     /**
      * @return Client
      */
-    public function getClient()
+    public function getClient(): Client
     {
         return $this->client;
     }
@@ -42,17 +42,17 @@ class Klaviyo
     /**
      * @return string
      */
-    public function getApiKey()
+    public function getApiKey(): string
     {
         return $this->apiKey;
     }
 
     /**
      * @param string $endpoint
-     * @param array $params
+     * @param mixed[] $params
      * @return string
      */
-    protected function getBaseUri($endpoint, array $params = [])
+    protected function getBaseUri(string $endpoint, array $params = []): string
     {
         $uri = $this->uri;
         $uri = rtrim($uri, '/');
@@ -66,9 +66,9 @@ class Klaviyo
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
-    protected function getDefaultRequestOptions()
+    protected function getDefaultRequestOptions(): array
     {
         return [
             'connect_timeout' => 2000,
@@ -77,10 +77,10 @@ class Klaviyo
     }
 
     /**
-     * @param array $properties
+     * @param mixed[] $properties
      * @throws \Exception
      */
-    public function identify(array $properties)
+    public function identify(array $properties): void
     {
         $params = [
             'token' => $this->apiKey,
@@ -94,7 +94,7 @@ class Klaviyo
      * @param IdentityInterface $identity
      * @throws \Exception
      */
-    public function pushIdentity(IdentityInterface $identity)
+    public function pushIdentity(IdentityInterface $identity): void
     {
         $number = $identity->getPhoneNumber();
 
@@ -123,7 +123,7 @@ class Klaviyo
      * @param EventInterface $event
      * @throws \Exception
      */
-    public function trackEvent(EventInterface $event)
+    public function trackEvent(EventInterface $event): void
     {
         $identity = $event->getIdentity();
 
@@ -151,9 +151,9 @@ class Klaviyo
 
     /**
      * @param string $name
-     * @return array
+     * @return mixed[]
      */
-    public function createMailingList($name)
+    public function createMailingList(string $name): array
     {
         $params = [
             'name' => $name,
@@ -165,9 +165,9 @@ class Klaviyo
     /**
      * @param string $listId
      * @param string $email
-     * @return array
+     * @return mixed[]
      */
-    public function addToMailingList($listId, $email)
+    public function addToMailingList(string $listId, string $email): array
     {
         $params = [
             'email' => $email,
@@ -179,9 +179,9 @@ class Klaviyo
     /**
      * @param string $listId
      * @param string $email
-     * @return array
+     * @return mixed[]
      */
-    public function removeFromMailingList($listId, $email)
+    public function removeFromMailingList(string $listId, string $email): array
     {
         $params = [
             'batch' => json_encode([
@@ -195,10 +195,10 @@ class Klaviyo
 
     /**
      * @param string $endpoint
-     * @param array $params
-     * @return array
+     * @param mixed[] $params
+     * @return mixed
      */
-    protected function post($endpoint, array $params)
+    protected function post(string $endpoint, array $params)
     {
         $uri = $this->getBaseUri($endpoint);
         $params['api_key'] = $this->apiKey;
@@ -212,10 +212,10 @@ class Klaviyo
 
     /**
      * @param string $endpoint
-     * @param array $params
-     * @return array
+     * @param mixed[] $params
+     * @return mixed
      */
-    protected function delete($endpoint, array $params = [])
+    protected function delete(string $endpoint, array $params = [])
     {
         $uri = $this->getBaseUri($endpoint);
         $params['api_key'] = $this->apiKey;
@@ -229,10 +229,10 @@ class Klaviyo
 
     /**
      * @param string $endpoint
-     * @param array $params
+     * @param mixed[] $params
      * @throws \Exception
      */
-    protected function sendLegacyRequest($endpoint, array $params)
+    protected function sendLegacyRequest(string $endpoint, array $params)
     {
         $data = base64_encode(json_encode($params));
         $uri = $this->getBaseUri($endpoint, ['data' => $data]);

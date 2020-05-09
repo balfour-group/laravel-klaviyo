@@ -15,16 +15,16 @@ class Event extends BaseEvent
     protected $name;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     protected $properties;
 
     /**
      * @param IdentityInterface|string $identity
      * @param string $name
-     * @param array $properties
+     * @param mixed[] $properties
      */
-    public function __construct($identity, $name, array $properties = [])
+    public function __construct($identity, string $name, array $properties = [])
     {
         $this->identity = $identity;
         $this->name = $name;
@@ -42,15 +42,15 @@ class Event extends BaseEvent
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
-    public function getProperties()
+    public function getProperties(): array
     {
         return $this->properties;
     }

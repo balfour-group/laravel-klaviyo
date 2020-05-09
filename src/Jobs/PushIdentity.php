@@ -35,7 +35,7 @@ class PushIdentity implements ShouldQueue
      * @param Klaviyo $klaviyo
      * @throws \Exception
      */
-    public function handle(Klaviyo $klaviyo)
+    public function handle(Klaviyo $klaviyo): void
     {
         $klaviyo->pushIdentity($this->identity);
     }
@@ -43,7 +43,7 @@ class PushIdentity implements ShouldQueue
     /**
      * @param IdentityInterface $identity
      */
-    public static function enqueue(IdentityInterface $identity)
+    public static function enqueue(IdentityInterface $identity): void
     {
         static::dispatch($identity)->onQueue(config('klaviyo.queue'));
     }

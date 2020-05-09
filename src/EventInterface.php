@@ -12,10 +12,10 @@ interface EventInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
-     * @return array
+     * @return mixed[]
      */
-    public function getProperties();
+    public function getProperties(): array;
 }

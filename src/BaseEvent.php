@@ -9,7 +9,7 @@ abstract class BaseEvent implements EventInterface
     /**
      * @param string $queue
      */
-    public function enqueue($queue = 'klaviyo')
+    public function enqueue(string $queue = 'klaviyo'): void
     {
         if (config('klaviyo.enabled')) {
             TrackEvent::enqueue($this, $queue);
@@ -19,7 +19,7 @@ abstract class BaseEvent implements EventInterface
     /**
      * @throws \Exception
      */
-    public function fire()
+    public function fire(): void
     {
         if (config('klaviyo.enabled')) {
             $klaviyo = app(Klaviyo::class); /** @var Klaviyo $klaviyo */

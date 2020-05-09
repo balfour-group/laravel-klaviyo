@@ -12,47 +12,47 @@ interface IdentityInterface
     public function getPrimaryKey();
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEmail();
+    public function getEmail() :?string;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFirstName();
+    public function getFirstName() :?string;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastName();
+    public function getLastName(): ?string;
 
     /**
-     * @return PhoneNumber
+     * @return PhoneNumber|null
      */
-    public function getPhoneNumber();
+    public function getPhoneNumber(): ?PhoneNumber;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getZipCode();
+    public function getZipCode(): ?string;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCity();
+    public function getCity(): ?string;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRegion();
+    public function getRegion(): ?string;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCountry();
+    public function getCountry(): ?string;
 
     /**
-     * @return array
+     * @return mixed[]
      */
-    public function getCustomKlaviyoProperties();
+    public function getCustomKlaviyoProperties(): array;
 }

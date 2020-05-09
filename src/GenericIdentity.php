@@ -52,12 +52,12 @@ class GenericIdentity implements IdentityInterface
     protected $country;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     protected $properties = [];
 
     /**
-     * @param string $primaryKey
+     * @param mixed $primaryKey
      * @return $this
      */
     public function setPrimaryKey($primaryKey)
@@ -76,10 +76,10 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      * @return $this
      */
-    public function setEmail($email)
+    public function setEmail(?string $email)
     {
         $this->email = $email;
 
@@ -87,18 +87,18 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     /**
-     * @param string $firstName
+     * @param string|null $firstName
      * @return $this
      */
-    public function setFirstName($firstName)
+    public function setFirstName(?string $firstName)
     {
         $this->firstName = $firstName;
 
@@ -106,18 +106,18 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
     /**
-     * @param string $lastName
+     * @param string|null $lastName
      * @return $this
      */
-    public function setLastName($lastName)
+    public function setLastName(?string $lastName)
     {
         $this->lastName = $lastName;
 
@@ -125,18 +125,18 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastName()
+    public function getLastName(): string
     {
         return $this->lastName;
     }
 
     /**
-     * @param PhoneNumber $phoneNumber
+     * @param PhoneNumber|null $phoneNumber
      * @return $this
      */
-    public function setPhoneNumber(PhoneNumber $phoneNumber)
+    public function setPhoneNumber(?PhoneNumber $phoneNumber)
     {
         $this->phoneNumber = $phoneNumber;
 
@@ -144,18 +144,18 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @return PhoneNumber
+     * @return PhoneNumber|null
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): ?PhoneNumber
     {
         return $this->phoneNumber;
     }
 
     /**
-     * @param string $zipCode
+     * @param string|null $zipCode
      * @return $this
      */
-    public function setZipCode($zipCode)
+    public function setZipCode(?string $zipCode)
     {
         $this->zipCode = $zipCode;
 
@@ -163,18 +163,18 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getZipCode()
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
 
     /**
-     * @param string $city
+     * @param string|null $city
      * @return $this
      */
-    public function setCity($city)
+    public function setCity(?string $city)
     {
         $this->city = $city;
 
@@ -182,18 +182,18 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
     /**
-     * @param string $region
+     * @param string|null $region
      * @return $this
      */
-    public function setRegion($region)
+    public function setRegion(?string $region)
     {
         $this->region = $region;
 
@@ -201,18 +201,18 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRegion()
+    public function getRegion(): ?string
     {
         return $this->region;
     }
 
     /**
-     * @param string $country
+     * @param string|null $country
      * @return $this
      */
-    public function setCountry($country)
+    public function setCountry(?string $country)
     {
         $this->country = $country;
 
@@ -220,18 +220,18 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
     /**
-     * @param array $properties
+     * @param mixed[] $properties
      * @return $this
      */
-    public function setCustomKlaviyoProperties($properties)
+    public function setCustomKlaviyoProperties(array $properties)
     {
         $this->properties = $properties;
 
@@ -239,9 +239,9 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
-    public function getCustomKlaviyoProperties()
+    public function getCustomKlaviyoProperties(): array
     {
         return $this->properties;
     }

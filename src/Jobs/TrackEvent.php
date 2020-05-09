@@ -35,7 +35,7 @@ class TrackEvent implements ShouldQueue
      * @param Klaviyo $klaviyo
      * @throws \Exception
      */
-    public function handle(Klaviyo $klaviyo)
+    public function handle(Klaviyo $klaviyo): void
     {
         $klaviyo->trackEvent($this->event);
     }
@@ -44,7 +44,7 @@ class TrackEvent implements ShouldQueue
      * @param EventInterface $event
      * @param string|null $queue
      */
-    public static function enqueue(EventInterface $event, $queue = null)
+    public static function enqueue(EventInterface $event, ?string $queue = null): void
     {
         if ($queue === null) {
             $queue = config('klaviyo.queue');
