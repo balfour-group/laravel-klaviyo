@@ -120,13 +120,12 @@ class Klaviyo
     }
 
     /**
+     * @param IdentityInterface|string $identity
      * @param EventInterface $event
      * @throws \Exception
      */
-    public function trackEvent(EventInterface $event): void
+    public function trackEvent($identity, EventInterface $event): void
     {
-        $identity = $event->getIdentity();
-
         $customProperties = [];
         if ($identity instanceof IdentityInterface) {
             $id = $identity->getPrimaryKey();

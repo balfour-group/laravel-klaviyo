@@ -48,25 +48,24 @@ PushIdentity::enqueue($user);
 // tracking an event
 $user = User::find(1);
 $event = new Event(
-    $user,
     'Complete Checkout Step 2',
     [
         'product' => 'Chicken Soup',
         'price' => 'R100.00',
     ]
 );
-$event->fire();
+$event->fire($user);
 // or
-$klaviyo->trackEvent($event);
+$klaviyo->trackEvent($user, $event);
 
 // tracking an event (using a queue)
-$event->enqueue();
+$event->enqueue($user);
 // or
-TrackEvent::enqueue($event);
+TrackEvent::enqueue($user, $event);
 
 // in the case that you don't have an identity object, but just an email identifier
-$event = new Event('matthew@masterstart.com', 'Subscribed To Mailing List');
-$event->fire();
+$event = new Event('Subscribed To Mailing List');
+$event->fire('matthew@masterstart.com');
 
 // create a mailing list
 $klaviyo->createMailingList('My List Name');

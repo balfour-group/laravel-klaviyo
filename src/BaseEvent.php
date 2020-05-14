@@ -3,30 +3,29 @@
 namespace Balfour\LaravelKlaviyo;
 
 use Balfour\LaravelKlaviyo\Jobs\TrackEvent;
-use Illuminate\Queue\SerializesModels;
 
 abstract class BaseEvent implements EventInterface
 {
-    use SerializesModels;
-
     /**
+     * @param string|IdentityInterface $identity
      * @param string $queue
      */
-    public function enqueue(string $queue = 'klaviyo'): void
+    public function enqueue($identity, string $queue = 'klaviyo'): void
     {
         if (config('klaviyo.enabled')) {
-            TrackEvent::enqueue($this, $queue);
+            TrackEvent::enqueue($identity, $this, $queue);
         }
     }
 
     /**
+     * @param IdentityInterface|string $identity
      * @throws \Exception
      */
-    public function fire(): void
+    public function fire($identity): void
     {
         if (config('klaviyo.enabled')) {
             $klaviyo = app(Klaviyo::class); /** @var Klaviyo $klaviyo */
-            $klaviyo->trackEvent($this);
+            $klaviyo->trackEvent($identity, $this);
         }
     }
 }
