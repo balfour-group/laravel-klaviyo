@@ -191,6 +191,12 @@ class Klaviyo
         ];
         return $this->delete(sprintf('v1/list/%s/members/batch', $listId), $params);
     }
+        
+    public function deleteList(string $listId)
+    {
+        $params = [];
+        return $this->post("v1/list/{$listId}", $params);
+    }
 
     /**
      * @param string $endpoint
