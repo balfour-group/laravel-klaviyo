@@ -195,7 +195,7 @@ class Klaviyo
     public function deleteList(string $listId)
     {
         $params = [];
-        return $this->post("v1/list/{$listId}", $params);
+        return $this->post(sprintf("v1/list/{$listId}"), $params);
     }
 
     /**
