@@ -127,7 +127,7 @@ class GenericIdentity implements IdentityInterface
     /**
      * @return string|null
      */
-    public function getLastName(): string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
