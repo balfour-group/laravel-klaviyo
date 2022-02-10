@@ -52,7 +52,12 @@ interface IdentityInterface
     public function getCountry(): ?string;
 
     /**
-     * @return mixed[]
+     * @return array
      */
     public function getCustomKlaviyoProperties(): array;
+
+    /**
+     * @return array
+     */
+    public function getConsent(): array;
 }

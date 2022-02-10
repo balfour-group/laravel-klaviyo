@@ -52,15 +52,20 @@ class GenericIdentity implements IdentityInterface
     protected $country;
 
     /**
-     * @var mixed[]
+     * @var array
      */
     protected $properties = [];
+
+    /**
+     * @var array
+     */
+    protected $consent = [];
 
     /**
      * @param mixed $primaryKey
      * @return $this
      */
-    public function setPrimaryKey($primaryKey)
+    public function setPrimaryKey($primaryKey): self
     {
         $this->primaryKey = $primaryKey;
 
@@ -79,7 +84,7 @@ class GenericIdentity implements IdentityInterface
      * @param string|null $email
      * @return $this
      */
-    public function setEmail(?string $email)
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -98,7 +103,7 @@ class GenericIdentity implements IdentityInterface
      * @param string|null $firstName
      * @return $this
      */
-    public function setFirstName(?string $firstName)
+    public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
 
@@ -117,7 +122,7 @@ class GenericIdentity implements IdentityInterface
      * @param string|null $lastName
      * @return $this
      */
-    public function setLastName(?string $lastName)
+    public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
 
@@ -136,7 +141,7 @@ class GenericIdentity implements IdentityInterface
      * @param PhoneNumber|null $phoneNumber
      * @return $this
      */
-    public function setPhoneNumber(?PhoneNumber $phoneNumber)
+    public function setPhoneNumber(?PhoneNumber $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
 
@@ -155,7 +160,7 @@ class GenericIdentity implements IdentityInterface
      * @param string|null $zipCode
      * @return $this
      */
-    public function setZipCode(?string $zipCode)
+    public function setZipCode(?string $zipCode): self
     {
         $this->zipCode = $zipCode;
 
@@ -174,7 +179,7 @@ class GenericIdentity implements IdentityInterface
      * @param string|null $city
      * @return $this
      */
-    public function setCity(?string $city)
+    public function setCity(?string $city): self
     {
         $this->city = $city;
 
@@ -193,7 +198,7 @@ class GenericIdentity implements IdentityInterface
      * @param string|null $region
      * @return $this
      */
-    public function setRegion(?string $region)
+    public function setRegion(?string $region): self
     {
         $this->region = $region;
 
@@ -212,7 +217,7 @@ class GenericIdentity implements IdentityInterface
      * @param string|null $country
      * @return $this
      */
-    public function setCountry(?string $country)
+    public function setCountry(?string $country): self
     {
         $this->country = $country;
 
@@ -228,10 +233,10 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @param mixed[] $properties
+     * @param array $properties
      * @return $this
      */
-    public function setCustomKlaviyoProperties(array $properties)
+    public function setCustomKlaviyoProperties(array $properties): self
     {
         $this->properties = $properties;
 
@@ -239,10 +244,29 @@ class GenericIdentity implements IdentityInterface
     }
 
     /**
-     * @return mixed[]
+     * @return array
      */
     public function getCustomKlaviyoProperties(): array
     {
         return $this->properties;
+    }
+
+    /**
+     * @param array $consent
+     * @return $this
+     */
+    public function setConsent(array $consent): self
+    {
+        $this->consent = $consent;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConsent(): array
+    {
+        return $this->consent;
     }
 }

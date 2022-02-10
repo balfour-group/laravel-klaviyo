@@ -106,6 +106,7 @@ class Klaviyo
             '$zip' => $identity->getZipCode(),
             '$city' => $identity->getCity(),
             '$region' => $identity->getRegion(),
+            '$consent' => $identity->getConsent(),
         ];
 
         $id = $identity->getPrimaryKey();
