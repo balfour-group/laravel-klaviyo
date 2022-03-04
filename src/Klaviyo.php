@@ -113,7 +113,6 @@ class Klaviyo
             $properties['$consent'] = $consent;
         }
 
-
         $id = $identity->getPrimaryKey();
 
         if ($id) {
